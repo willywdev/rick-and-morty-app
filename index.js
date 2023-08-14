@@ -23,13 +23,14 @@ async function fetchCharacters() {
   const data = await response.json();
   const characters = data.results;
   characters.forEach((character) => {
-    createCharacterCard(
+    const characterCard = createCharacterCard(
       character.image,
       character.name,
       character.status,
       character.type,
       character.episode.length
     );
+    cardContainer.append(characterCard);
   });
 }
 
