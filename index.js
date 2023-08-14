@@ -1,6 +1,8 @@
 import { createCharacterCard } from "./components/card/card.js";
 
-const cardContainer = document.querySelector('[data-js="card-container"]');
+export const cardContainer = document.querySelector(
+  '[data-js="card-container"]'
+);
 const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
 );
@@ -21,5 +23,4 @@ const status = "Alive";
 const type = "";
 const occurence = "51";
 
-const rickSanchez = createCharacterCard(source, name, status, type, occurence);
-cardContainer.append(rickSanchez);
+createCharacterCard(source, name, status, type, occurence);
