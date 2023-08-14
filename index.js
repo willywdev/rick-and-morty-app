@@ -17,10 +17,20 @@ const maxPage = 1;
 const page = 1;
 const searchQuery = "";
 
-const source = "https://rickandmortyapi.com/api/character/avatar/1.jpeg";
-const name = "Rick Sanchez";
-const status = "Alive";
-const type = "";
-const occurence = "51";
+async function fetchCharacters() {
+  cardContainer.innerHTML = "";
+  const response = await fetch("https://rickandmortyapi.com/api/character");
+  const data = await response.json();
+  const characters = data.results;
+  characters.forEach((character) => {
+    createCharacterCard(
+      character.image,
+      character.name,
+      character.status,
+      character.type,
+      character.episode.length
+    );
+  });
+}
 
-createCharacterCard(source, name, status, type, occurence);
+fetchCharacters();
