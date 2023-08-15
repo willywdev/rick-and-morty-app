@@ -15,7 +15,6 @@ const pagination = document.querySelector('[data-js="pagination"]');
 prevButton.addEventListener("click", () => {
   if (page > 1) {
     page--;
-    pagination.innerHTML = `${page}/${maxPage}`;
     fetchCharacters();
   }
 });
@@ -24,11 +23,9 @@ nextButton.addEventListener("click", () => {
   if (page < maxPage) {
     page++;
 
-    pagination.innerHTML = `${page}/${maxPage}`;
     fetchCharacters();
   }
 });
-console.log(pagination);
 
 // States
 let maxPage = 1;
@@ -42,7 +39,7 @@ async function fetchCharacters() {
   );
   const data = await response.json();
   maxPage = data.info.pages;
-  pagination.innerHTML = `${page}/${maxPage}`;
+  pagination.textContent = `${page}/${maxPage}`;
   const characters = data.results;
   characters.forEach((character) => {
     const characterCard = createCharacterCard(
