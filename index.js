@@ -13,15 +13,20 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
 prevButton.addEventListener("click", () => {
-  page--;
-  pagination.innerHTML = `${page}/${maxPage}`;
-  fetchCharacters();
+  if (page > 1) {
+    page--;
+    pagination.innerHTML = `${page}/${maxPage}`;
+    fetchCharacters();
+  }
 });
 
 nextButton.addEventListener("click", () => {
-  page++;
-  pagination.innerHTML = `${page}/${maxPage}`;
-  fetchCharacters();
+  if (page < maxPage) {
+    page++;
+
+    pagination.innerHTML = `${page}/${maxPage}`;
+    fetchCharacters();
+  }
 });
 console.log(pagination);
 
