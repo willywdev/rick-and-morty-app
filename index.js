@@ -56,6 +56,7 @@ async function fetchCharacters() {
 fetchCharacters();
 
 searchBar.addEventListener("submit", (event) => {
+  page = 1;
   event.preventDefault();
   searchQuery = event.target.query.value;
   fetchCharacters();
